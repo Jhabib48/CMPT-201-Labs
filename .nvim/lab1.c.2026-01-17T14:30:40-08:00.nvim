@@ -1,0 +1,30 @@
+#define _GNU_SOURCE
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  printf("ERROR\n");
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t read;
+  int exit = 0;
+
+  printf("Error");
+
+  while (exit != -1) {
+    printf("Please enter some text:\n");
+    fflush(stdout);
+
+    read = getline(&line, &len, stdin);
+    if (read == -1)
+      break;
+    if (read == 1)
+      continue;
+
+    printf("Entered: %s", line);
+  }
+
+  free(line);
+  return 0;
+}

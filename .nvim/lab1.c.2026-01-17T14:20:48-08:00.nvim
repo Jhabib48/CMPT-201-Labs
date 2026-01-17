@@ -1,0 +1,22 @@
+#define _GNU_SOURCE
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t read;
+  int exit = 0; 
+  while (exit != -1) {
+    printf("Please enter some text: ");
+    read = getline(&line, &len, stdin);
+
+    exit = -1; 
+  }
+
+  printf("Line: %s", line);
+  printf("Read: %zd", read);
+
+  return 0;
+}

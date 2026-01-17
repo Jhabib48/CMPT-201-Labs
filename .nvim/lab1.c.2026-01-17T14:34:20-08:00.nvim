@@ -1,0 +1,24 @@
+#define _GNU_SOURCE
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t read;
+  int exit = 0;
+
+  while (exit != -1) {
+    printf("Please enter some text: ");
+    fflush(stdout);
+
+    read = getline(&line, &len, stdin);
+    if(read == 1) continue; 
+    if(read == -1) break; 
+    printf("Entered: %s", line);
+  }
+
+  free(line);
+  return 0;
+}
